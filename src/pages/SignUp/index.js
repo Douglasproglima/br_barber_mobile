@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 
 import logo from '~/assets/logo60x60.png';
 // import logo from '~/assets/logo60x60-black.png';
-import Background from '~/components/Background';
+import Background from '~/components/Background/auth';
 
 import {
   Container,
