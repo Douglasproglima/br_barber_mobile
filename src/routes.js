@@ -5,7 +5,7 @@ import SignIn from './pages/SignIn';
 
 export default createAppContainer(
   createSwitchNavigator({
-    SignUp,
     SignIn,
+    SignUp,
   })
 );
