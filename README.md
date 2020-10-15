@@ -55,9 +55,9 @@ Para instalar as dependências rode o comando:
 
 Criar e subir um banco de dados Postgres pelo docker
 
-* docker run --name gobarber-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
+* docker run --name brbarber-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
 
-* docker start gobarber-db
+* docker start brbarber-db
 
 No terminal e dentro da pasta backend rode o comando:
 * yarn sequelize db:migrate para criar as tabelas no bando de dados
@@ -74,7 +74,7 @@ Criar e subir um banco de dados MongoDB pelo docker
 
 *docker start mongo-barber
 
-Acesse o banco postgres com um gerenciador como, no meu caso usei o Postbird e após isso,  crie o banco com nome de gobarber
+Acesse o banco postgres com um gerenciador como, no meu caso usei o Postbird e após isso,  crie o banco com nome de brbarber
 
 Siga o arquivo .env.example para setar as configurações
 

@@ -1,7 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { Image, View, Button } from 'react-native';
+import { Image, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useDispatch, useSelector } from 'react-redux';
+
+import logo from '~/assets/logo.png';
+
+import Background from '~/components/Background/auth';
+import { signInRequest } from '~/store/modules/auth/actions';
+
 import {
   Container,
   Title,
@@ -13,9 +19,6 @@ import {
   CreateAccountButton,
   CreateAccountButtonText,
 } from './styles';
-import Background from '~/components/Background/auth';
-import logo from '~/assets/logo60x60.png';
-import { signInRequest } from '~/store/modules/auth/actions';
 
 export default function SignIn({ navigation }) {
   const dispatch = useDispatch();
@@ -33,7 +36,7 @@ export default function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
-        <Image style={{ width: 340, height: 180 }} source={logo} />
+        <Image style={{ width: 340, height: 140 }} source={logo} />
 
         <View>
           <Title>Faça seu logon</Title>
@@ -41,20 +44,21 @@ export default function SignIn({ navigation }) {
 
         <Form>
           <FormInput
-            icon="email"
-            keyboardType="email-address"
+            icon="mail-outline"
+            keyboardType="email-adress"
             autoCorrect={false}
-            autoCaputalize="none"
-            placeholder="Digite seu e-mail"
+            autoCapitalize="none"
+            placeholder="Digite seu email"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             value={email}
             onChangeText={setEmail}
           />
+
           <FormInput
-            icon="lock"
+            icon="lock-outline"
             secureTextEntry
-            placeholder="Digite sua senha"
+            placeholder="Sua senha screta"
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
@@ -65,11 +69,6 @@ export default function SignIn({ navigation }) {
           <SubmitButton loading={loading} onPress={handleSubmit}>
             ENTRAR
           </SubmitButton>
-          <Button
-            style={{ backgroundColor: '#eb3349', borderRadius: 4, height: 46 }}
-            title="ENTRAR"
-            onPress={handleSubmit}
-          />
         </Form>
 
         <SignLink onPress={() => navigation.navigate('SignUp')}>

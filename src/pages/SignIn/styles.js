@@ -18,7 +18,7 @@ export const Title = styled.Text`
   color: #fff;
   font-weight: bold;
   font-family: 'RobotoSlab-Medium';
-  margin: 0px 0 25px;
+  margin: 15px 0 25px;
 `;
 
 export const Form = styled.View`

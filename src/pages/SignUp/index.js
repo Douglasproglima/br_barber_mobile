@@ -2,6 +2,11 @@ import React, { useRef, useState } from 'react';
 import { Image, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useDispatch, useSelector } from 'react-redux';
+import logo from '~/assets/logo.png';
+
+import Background from '~/components/Background/auth';
+import { signUpRequest } from '~/store/modules/auth/actions';
+
 import {
   Container,
   Title,
@@ -13,13 +18,12 @@ import {
   BackToSignIn,
   BackToSignInText,
 } from './styles';
-import logo from '~/assets/logo60x60.png';
-import Background from '~/components/Background/auth';
-import { signUpRequest } from '~/store/modules/auth/actions';
 
 export default function SignUp({ navigation }) {
-  const emailRef = useRef();
+  const dispatch = useDispatch();
+
   const passwordRef = useRef();
+  const emailRef = useRef();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,17 +31,14 @@ export default function SignUp({ navigation }) {
 
   const loading = useSelector(state => state.auth.loading);
 
-  const dispatch = useDispatch();
-
   function handleSubmit() {
-    if (name && email && password)
-      dispatch(signUpRequest(name, email, password));
+    dispatch(signUpRequest(name, email, password));
   }
 
   return (
     <Background>
       <Container>
-        <Image style={{ width: 340, height: 180 }} source={logo} />
+        <Image style={{ width: 340, height: 140 }} source={logo} />
 
         <View>
           <Title>Crie sua conta</Title>
@@ -45,45 +46,47 @@ export default function SignUp({ navigation }) {
 
         <Form>
           <FormInput
-            icon="person"
+            icon="person-outline"
             autoCorrect={false}
-            autoCaputalize="none"
-            placeholder="Digite seu nome"
+            autoCapitalize="none"
+            placeholder="Nome Completo"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
             value={name}
             onChangeText={setName}
           />
+
           <FormInput
-            icon="email"
-            keyboardType="email-address"
+            icon="mail-outline"
+            keyboardType="email-adress"
             autoCorrect={false}
-            autoCaputalize="none"
-            placeholder="Digite seu e-mail"
-            returnKeyType="next"
+            autoCapitalize="none"
+            placeholder="Digite seu email"
             ref={emailRef}
+            returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             value={email}
             onChangeText={setEmail}
           />
+
           <FormInput
-            icon="lock"
+            icon="lock-outline"
             secureTextEntry
-            placeholder="Digite sua senha"
-            returnKeyType="send"
+            placeholder="Sua senha screta"
             ref={passwordRef}
+            returnKeyType="send"
             onSubmitEditing={handleSubmit}
-            value={password}
+            vale={password}
             onChangeText={setPassword}
           />
 
           <SubmitButton loading={loading} onPress={handleSubmit}>
-            CADASTRAR
+            Criar conta
           </SubmitButton>
         </Form>
 
         <SignLink onPress={() => navigation.navigate('SignIn')}>
-          <SignLinkText>Já possui uma conta? Faça Login</SignLinkText>
+          <SignLinkText>Já tenho conta</SignLinkText>
         </SignLink>
 
         <BackToSignIn onPress={() => navigation.navigate('SignIn')}>

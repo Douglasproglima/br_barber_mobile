@@ -1,6 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+// import { YellowBox } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useDispatch, useSelector } from 'react-redux';
+
+import Background from '~/components/Background/other';
+import { signOut } from '~/store/modules/auth/actions';
+import { updateProfileRequest } from '~/store/modules/user/actions';
+
 import {
   Container,
   Title,
@@ -10,9 +18,8 @@ import {
   SubmitButton,
   LogoutButton,
 } from './styles';
-import { updateProfileRequest } from '~/store/modules/user/actions';
-import { signOut } from '~/store/modules/auth/actions';
-import Background from '~/components/Background/other';
+
+// console.disableYellowBox = true;
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -61,7 +68,7 @@ export default function Profile() {
             icon="person-outline"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Nome completo"
+            placeholder="Nome Completo"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
             value={name}
@@ -70,12 +77,12 @@ export default function Profile() {
 
           <FormInput
             icon="mail-outline"
-            keyboardType="email-address"
+            keyboardType="email-adress"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu email"
-            returnKeyType="next"
             ref={emailRef}
+            returnKeyType="next"
             onSubmitEditing={() => oldPasswordRef.current.focus()}
             value={email}
             onChangeText={setEmail}
@@ -87,10 +94,10 @@ export default function Profile() {
             icon="lock-outline"
             secureTextEntry
             placeholder="Sua senha atual"
-            returnKeyType="next"
             ref={oldPasswordRef}
+            returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
-            value={oldPassword}
+            vale={oldPassword}
             onChangeText={setOldPassword}
           />
 
@@ -101,7 +108,7 @@ export default function Profile() {
             ref={passwordRef}
             returnKeyType="next"
             onSubmitEditing={() => confirmPasswordRef.current.focus()}
-            value={password}
+            vale={password}
             onChangeText={setPassword}
           />
 
@@ -109,10 +116,10 @@ export default function Profile() {
             icon="lock-outline"
             secureTextEntry
             placeholder="Confirmação de senha"
-            returnKeyType="send"
             ref={confirmPasswordRef}
+            returnKeyType="send"
             onSubmitEditing={handleSubmit}
-            value={confirmPassword}
+            vale={confirmPassword}
             onChangeText={setConfirmPassword}
           />
 
