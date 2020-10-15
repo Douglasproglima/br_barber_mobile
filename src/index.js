@@ -3,17 +3,17 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import Routes from './routes';
+
 import { store, persistor } from './store';
 
-console.tron.log('Logando');
+import App from './App';
 
-export default function App() {
+export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <StatusBar translucent backgroundColor="transparent" />
-        <Routes />
+        <App />
       </PersistGate>
     </Provider>
   );

@@ -1,6 +1,7 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { Alert } from 'react-native';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 import api from '~/services/api';
+// import history from '~/services/history';
 import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
@@ -13,24 +14,24 @@ export function* signIn({ payload }) {
 
     const { token, user } = response.data;
 
+    // Verificar se o usuário que logou é prestador de serviço na web é ao contrário
     if (user.provider) {
-      Alert.alert(
-        'Erro no login',
-        'usuario nao pode ser prestador de serviços'
-      );
+      Alert.alert('Falha no login', 'Usuário não é um prestador de serviço.');
+      // toast.error('🦄 Usuário não é um prestador de serviço.');
       return;
     }
 
-    api.defaults.headers.Authorization = `Baerer ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
 
     // history.push('/dashboard');
-  } catch (err) {
+  } catch (error) {
     Alert.alert(
-      'Falha na autenticação',
-      `Houve um erro no login, verifique seu email/senha: ${err}`
+      'Falha no login',
+      'Falha na autenticação, verifique seus dados.'
     );
+    // toast.error('🦄 Falha na autenticação, verifique seus dados.');
     yield put(signFailure());
   }
 }
@@ -43,24 +44,22 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
+      provider: true,
     });
-
-    Alert.alert('Sucesso', 'Cadastro realizado com sucesso.');
 
     // history.push('/');
   } catch (err) {
-    console.tron.log('erro no cadastro', err);
-    Alert.alert('Falha no cadastro', `verifique seus dados: ${err}`);
+    Alert.alert('Falha no login', 'Falha no cadastro, verifique seus dados.');
+    // toast.error('🦄 Falha no cadastro, verifique seus dados.');
     yield put(signFailure());
   }
 }
 
 export function setToken({ payload }) {
   if (!payload) return;
+
   const { token } = payload.auth;
-  if (token) {
-    api.defaults.headers.Authorization = `Baerer ${token}`;
-  }
+  if (token) api.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 export function signOut() {

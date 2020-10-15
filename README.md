@@ -48,6 +48,39 @@ Pré-requisitos:
 - Yarn/Npm
 - [Back-end](https://github.com/Douglasproglima/br-barbers-api) da aplicação rodando
 
+Acesse a pasta br-barbarber-api e siga os passos abaixos:
+
+Para instalar as dependências rode o comando:
+* yarn
+
+Criar e subir um banco de dados Postgres pelo docker
+
+* docker run --name gobarber-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
+
+* docker start gobarber-db
+
+No terminal e dentro da pasta backend rode o comando:
+* yarn sequelize db:migrate para criar as tabelas no bando de dados
+
+Criar e subir um banco de dados Redis pelo docker
+
+* docker run --name redis-barber -p 6379:6379 -d -t redis:alpine
+
+* docker start redis-barber
+
+Criar e subir um banco de dados MongoDB pelo docker
+
+*docker run --name mongo-barber -p 27017:27017 -d -t mongo
+
+*docker start mongo-barber
+
+Acesse o banco postgres com um gerenciador como, no meu caso usei o Postbird e após isso,  crie o banco com nome de gobarber
+
+Siga o arquivo .env.example para setar as configurações
+
+Para startar o servidor, rode o comando:
+* yarn dev
+
 Tendo isso, startamos o aplicativo
 
 > react-native start
@@ -76,11 +109,11 @@ Ou, no emulador do iphone
 <div align="center">
   <h2>Tela de Login</h2>
   <img src="./demo/Web/1.png" height="550"/>
-  
+
   </br></br>
   <h2>Tela de Cadastro</h2>
   <img src="./demo/Web/2.png" height="550"/>
-  
+
   </br></br>
   <h2>Listagem dos Agendados do Dia - Thema Dark</h2>
   <img src="./demo/Web/3.png" height="550"/>
@@ -109,11 +142,11 @@ Ou, no emulador do iphone
   </br></br>
   <h2>Tela de Login</h2>
   <img src="./demo/Mobile/2.png" height="550"/>
-  
+
   </br></br>
   <h2>Tela de Cadastro</h2>
   <img src="./demo/Mobile/3.png" height="550"/>
-  
+
   </br></br>
   <h2>Listagem dos barbeiros</h2>
   <img src="./demo/Mobile/4.png" height="550"/>
