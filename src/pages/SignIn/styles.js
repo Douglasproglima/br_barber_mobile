@@ -4,7 +4,7 @@ import Input from '~/components/Input';
 import Button from '~/components/Button';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
-  // enabled: Platform.OS === 'android',
+  enabled: Platform.OS === 'android',
   behavior: 'padding',
 })`
   flex: 1;
@@ -28,6 +28,7 @@ export const Form = styled.View`
 
 export const FormInput = styled(Input)`
   margin-bottom: 10px;
+  background: #7e482a;
 `;
 export const SubmitButton = styled(Button)`
   margin-top: 5px;

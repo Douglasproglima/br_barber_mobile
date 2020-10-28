@@ -32,12 +32,17 @@ export const FormInput = styled(Input)`
   margin-bottom: 10px;
 `;
 
-export const SubmitButton = styled(Button)`
-  margin-top: 5px;
-  background: #727cf5;
+export const SubmitButton = styled(Button).attrs({
+  color: '#ffffff',
+})`
+  margin-top: 10px;
+  background: #ff8039;
+  height: 40px;
 `;
 
 export const LogoutButton = styled(Button)`
-  margin-top: 10px;
-  background: #727cf5;
+  margin-top: 20px;
+  background: #ff8039;
+  color: #ffffff;
+  height: 40px;
 `;

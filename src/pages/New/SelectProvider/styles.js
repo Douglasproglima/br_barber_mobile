@@ -9,18 +9,18 @@ export const ProvidersList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   numColumns: 2,
 })`
-  margin-top: 60px;
+  margin-top: 100px;
   padding: 0 20px;
 `;
 
 export const Provider = styled(RectButton)`
-  background: #FFF;
-  border-radius: 4px;
+  background: #ff8039;
+  color: #fff;
+  border-radius: 5px;
   padding: 20px;
   flex: 1;
-
   align-items: center;
-  margin: 0 10px 20px;
+  margin: 0 8px 20px;
 `;
 
 export const Avatar = styled.Image`
@@ -33,6 +33,6 @@ export const Name = styled.Text`
   margin-top: 15px;
   font-size: 14px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   text-align: center;
 `;

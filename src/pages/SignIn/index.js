@@ -45,7 +45,7 @@ export default function SignIn({ navigation }) {
         <Form>
           <FormInput
             icon="mail-outline"
-            keyboardType="email-adress"
+            keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu email"

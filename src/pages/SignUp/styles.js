@@ -4,7 +4,7 @@ import Input from '~/components/Input';
 import Button from '~/components/Button';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
-  // enabled: Platform.OS === 'android',
+  enabled: Platform.OS === 'android',
   behavior: 'padding',
 })`
   flex: 1;
@@ -18,7 +18,7 @@ export const Title = styled.Text`
   color: #fff;
   font-weight: bold;
   font-family: 'RobotoSlab-Medium';
-  margin: 15px 0 25px;
+  margin: 15px 0 10px;
 `;
 
 export const Form = styled.View`
@@ -28,6 +28,7 @@ export const Form = styled.View`
 
 export const FormInput = styled(Input)`
   margin-bottom: 10px;
+  background: #7e482a;
 `;
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
@@ -38,6 +39,7 @@ export const SignLink = styled.TouchableOpacity`
 `;
 export const SignLinkText = styled.Text`
   color: #fff;
+  margin-bottom: 50px;
   font-weight: bold;
   font-size: 14px;
   align-self: center;
@@ -48,7 +50,7 @@ export const BackToSignIn = styled.TouchableOpacity`
   left: 0;
   bottom: 0;
   right: 0;
-  background: #333333;
+  background: #333;
   border-top-width: 1px;
   border-color: #ff9e40;
   padding: 16px 0 16px;

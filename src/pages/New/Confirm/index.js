@@ -1,12 +1,10 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import { formatRelative, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import pt from 'date-fns/locale/pt-BR';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
 import api from '~/services/api';
-
 
 import Background from '~/components/Background';
 
@@ -17,7 +15,7 @@ export default function Confirm({ navigation }) {
   const time = navigation.getParam('time');
 
   const dateFormated = useMemo(
-    () => formatRelative(parseISO(time), new Date(), { locale: pt}),
+    () => formatRelative(parseISO(time), new Date(), { locale: pt }),
     [time]
   );
 
@@ -33,31 +31,32 @@ export default function Confirm({ navigation }) {
   return (
     <Background>
       <Container>
-        <Avatar source={{
-          uri: provider.Avatar
-            ? provider.avatar.url
-            : `https://api.adorable.io/avatar/50/${provider.name}`
-        }} />
+        <Avatar
+          source={{
+            uri: provider.Avatar
+              ? provider.avatar.url
+              : `https://api.adorable.io/avatar/50/${provider.name}`,
+          }}
+        />
 
         <Name>{provider.name}</Name>
         <Time>{dateFormated}</Time>
 
-        <SubmitButton onPress={handleAddAppointment}>
-          Confirmar agendamento
-        </SubmitButton>
+        <SubmitButton onPress={handleAddAppointment}>CONFIRMAR</SubmitButton>
       </Container>
     </Background>
   );
 }
 
 Confirm.navigationOptions = ({ navigation }) => ({
-  title: '       Confirmar agendamento',
+  title: 'Confirmar Agendamento',
   headerLeft: () => (
-    <TouchableOpacity onPress={() => {
-      navigation.navigate('Dashboard');
-    }}>
-      <Icon name="chevron-left" size={20} color="#FFF" />
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Dashboard');
+      }}
+    >
+      <Icon name="chevron-left" size={25} color="#ff8039" />
     </TouchableOpacity>
   ),
 });
-

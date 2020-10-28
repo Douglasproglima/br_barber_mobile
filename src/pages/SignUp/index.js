@@ -58,7 +58,7 @@ export default function SignUp({ navigation }) {
 
           <FormInput
             icon="mail-outline"
-            keyboardType="email-adress"
+            keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu email"
@@ -81,7 +81,7 @@ export default function SignUp({ navigation }) {
           />
 
           <SubmitButton loading={loading} onPress={handleSubmit}>
-            Criar conta
+            CRIAR CONTA
           </SubmitButton>
         </Form>
 

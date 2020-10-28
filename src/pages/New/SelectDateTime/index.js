@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
 
-import Background from '~/components/Background';
-import DateInput from '~/components/DateInput'
+import Background from '~/components/Background/other';
+import DateInput from '~/components/DateInput';
 
 import { Container, HourList, Hour, Title } from './styles';
 
@@ -19,21 +19,21 @@ export default function SelectDateTime({ navigation }) {
     async function loadAvailable() {
       const response = await api.get(`providers/${provider.id}/available`, {
         params: {
-          date: date.getTime()
-        }
+          date: date.getTime(),
+        },
       });
 
       setHours(response.data);
     }
 
     loadAvailable();
-  }, [date, provider.id])
+  }, [date, provider.id]);
 
   function handleSelectHour(time) {
     navigation.navigate('Confirm', {
       provider,
       time,
-    })
+    });
   }
 
   return (
@@ -45,9 +45,11 @@ export default function SelectDateTime({ navigation }) {
           data={hours}
           keyExtractor={item => item.time}
           renderItem={({ item }) => (
-            <Hour onPress={() => handleSelectHour(item.value)} enabled={item.available}>
+            <Hour
+              onPress={() => handleSelectHour(item.value)}
+              enabled={item.available}
+            >
               <Title>{item.time}</Title>
-
             </Hour>
           )}
         />
@@ -57,12 +59,14 @@ export default function SelectDateTime({ navigation }) {
 }
 
 SelectDateTime.navigationOptions = ({ navigation }) => ({
-  title: '       Selecione o horário',
+  title: 'Selecione o Horário',
   headerLeft: () => (
-    <TouchableOpacity onPress={() => {
-      navigation.goBack();
-    }}>
-      <Icon name="chevron-left" size={20} color="#FFF" />
+    <TouchableOpacity
+      onPress={() => {
+        navigation.goBack();
+      }}
+    >
+      <Icon name="chevron-left" size={20} color="#ff8039" />
     </TouchableOpacity>
   ),
 });

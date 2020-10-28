@@ -77,7 +77,7 @@ export default function Profile() {
 
           <FormInput
             icon="mail-outline"
-            keyboardType="email-adress"
+            keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu email"
@@ -122,9 +122,10 @@ export default function Profile() {
             vale={confirmPassword}
             onChangeText={setConfirmPassword}
           />
+          <Separator />
 
-          <SubmitButton onPress={handleSubmit}>Atualizar perfil</SubmitButton>
-          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
+          <SubmitButton onPress={handleSubmit}>ATUALIZAR</SubmitButton>
+          <LogoutButton onPress={handleLogout}>SAIR</LogoutButton>
         </Form>
       </Container>
     </Background>

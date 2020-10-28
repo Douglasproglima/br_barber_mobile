@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
 
-import Background from '~/components/Background';
+import Background from '~/components/Background/other';
 
 import { Container, ProvidersList, Provider, Avatar, Name } from './styles';
 
@@ -23,32 +23,41 @@ export default function SelectProvider({ navigation }) {
   return (
     <Background>
       <Container>
-          <ProvidersList
-            data={providers}
-            keyExtractor={provider => String(provider.id)}
-            renderItem={({ item: provider }) => (
-              <Provider onPress={() => navigation.navigate('SelectDateTime', { provider })}>
-                <Avatar source={{
+        <ProvidersList
+          data={providers}
+          keyExtractor={provider => String(provider.id)}
+          renderItem={({ item: provider }) => (
+            <Provider
+              onPress={() =>
+                navigation.navigate('SelectDateTime', { provider })
+              }
+            >
+              <Avatar
+                source={{
                   uri: provider.Avatar
                     ? provider.avatar.url
-                    : `https://api.adorable.io/avatar/50/${provider.name}`
-                }} />
-                <Name>{provider.name}</Name>
-              </Provider>
-            )}
-          />
+                    : `https://api.adorable.io/avatar/50/${provider.name}`,
+                }}
+              />
+              <Name>{provider.name}</Name>
+            </Provider>
+          )}
+        />
       </Container>
     </Background>
   );
 }
 
 SelectProvider.navigationOptions = ({ navigation }) => ({
-  title: '       Selecione o prestador',
+  title: 'Selecione o Prestador',
+  backgroundColor: '#ff8039',
   headerLeft: () => (
-    <TouchableOpacity onPress={() => {
-      navigation.navigate('Dashboard');
-    }}>
-      <Icon name="chevron-left" size={20} color="#FFF" />
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Dashboard');
+      }}
+    >
+      <Icon name="chevron-left" size={20} color="#ff8039" />
     </TouchableOpacity>
   ),
 });

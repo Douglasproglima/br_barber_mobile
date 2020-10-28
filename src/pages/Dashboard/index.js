@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
 
 import api from '~/services/api';
 
-import Background from '~/components/Background';
+import Background from '~/components/Background/other';
 import Appointment from '~/components/Appointment';
 
 import { Container, Title, List } from './styles';
 
-  function Dashboard({ isFocused }) {
+function Dashboard({ isFocused }) {
   const [appointments, setAppointments] = useState([]);
 
   async function loadAppointments() {
@@ -19,7 +19,6 @@ import { Container, Title, List } from './styles';
   }
 
   // useEffect(() => {
-
 
   //   loadAppointments();
   // }, []);
@@ -37,10 +36,10 @@ import { Container, Title, List } from './styles';
       appointments.map(appointment =>
         appointment.d === id
           ? {
-            ...appointment,
-            canceled_at: response.data.canceled_at,
-          }
-        : appointment
+              ...appointment,
+              canceled_at: response.data.canceled_at,
+            }
+          : appointment
       )
     );
   }

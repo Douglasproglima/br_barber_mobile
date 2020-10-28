@@ -7,7 +7,7 @@ import axios from 'axios';
   VIA USB: http://localhost:3333 or http://IP_DA_SUA_REDE:3333
 */
 const IP_ADDRESS = 'http://10.0.2.2:3333';
-// const IP_USB = 'http://192.168.1.7:3333';
+const IP_USB = 'http://192.168.67.129:3333';
 
 const api = axios.create({
   baseURL: IP_ADDRESS,

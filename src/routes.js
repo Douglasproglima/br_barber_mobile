@@ -44,7 +44,7 @@ export default (signedIn = false) =>
                 }
               ),
               navigationOptions: {
-                tabBarVisible: false,
+                tabBarVisible: true,
                 tabBarLabel: 'Agendar',
                 tabBarIcon: (
                   <Icon
